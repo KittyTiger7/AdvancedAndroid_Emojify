@@ -21,7 +21,7 @@ public class Emojifier {
 
         FaceDetector detector = new FaceDetector.Builder(context)
                 .setTrackingEnabled(false)
-                .setLandmarkType(FaceDetector.NO_LANDMARKS)
+                .setLandmarkType(FaceDetector.ALL_CLASSIFICATIONS)
                 .build();
 
         Frame frame = new Frame.Builder().setBitmap(resampledBitmap).build();
@@ -33,5 +33,7 @@ public class Emojifier {
         } else {
             Log.i("Emojifier: ", "number of faces in Bitmap is: " + faces.size());
         }
+
+        detector.release();
     }
 }
